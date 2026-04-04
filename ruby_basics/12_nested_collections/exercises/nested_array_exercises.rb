@@ -1,5 +1,3 @@
-require 'pry-byebug'
-
 def blank_seating_chart(number_of_rows, seats_per_row)
   # return a 2d array to represent a seating chart that contains
   # number_of_rows nested arrays, each with seats_per_row entries of nil to
@@ -63,14 +61,5 @@ def find_favorite(array_of_hash_objects)
 
   # TIP: there will only be a maximum of one hash in the array that will
   # return true to the :is_my_favorite? key
-  result = nil;
-  array_of_hash_objects.each do |currentHash|
-    correctHash = currentHash.any? do |key, value|
-      key == :is_my_favorite? && value
-    end
-    if (correctHash)
-      result = currentHash
-    end
-  end
-  result
+  array_of_hash_objects.find { |currentHash| currentHash[:is_my_favorite?] == true } 
 end
